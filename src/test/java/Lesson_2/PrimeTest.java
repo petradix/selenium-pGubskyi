@@ -12,7 +12,7 @@ public class PrimeTest
 {
     @Test
     public void isPrimeNumberTest(){
-        int num1 = 8;
+        int num1 = 7;
 
         Assert.assertTrue(isPrime(num1));
     }

@@ -1,45 +1,46 @@
-package HomeWork1;
+package ui_tests.Lesson_5;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
+/**
+ * Created by petr
+ * Date: 22.07.2015
+ * Time: 20:58.
+ */
+public class GoogleTest {
 
-public class Stylus {
     private WebDriver driver;
     private WebElement searchField;
     private String searchText;
     private WebElement searchLink;
 
-
     @BeforeTest
     public void setUp(){
-        searchText = "Sony Xperia Z2";
+        searchText = "Selenium";
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://www.stylus.com.ua");
+        driver.get("https://www.google.com");
 
     }
 
 
     @Test
-    public void seleniumSearchTest(){
+        public void seleniumSearchTest(){
 
-        searchField = driver.findElement(By.xpath(".//*[@id='header']/div[2]/div[2]/form/input[1]"));
+        searchField = driver.findElement(By.id("lst-ib"));
         searchField.sendKeys(searchText);
-        driver.findElement(By.xpath(".//*[@id='header']/div[2]/div[2]/form/input[2]")).click();
-
-        searchLink = driver.findElement(By.xpath(".//*[@id='search-list']/ul/li[2]/a/span"));
+        searchLink = driver.findElement(By.xpath(".//*[@id='rso']/div[2]/li[1]/div/h3/a"));
 
         assertTrue(searchLink.getText().contains(searchText));
 

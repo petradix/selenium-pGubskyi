@@ -20,11 +20,11 @@ public class GoogleSearchTest extends TestBase{
 
     @Test
     public void seleniumSearchTest(){
-        GoogleSearchPage onGoogleSearchPage = new GoogleSearchPage(driver);
+        GoogleSearchPage onGoogleSearchPage = new GoogleSearchPage(webDriver);
         onGoogleSearchPage.open(googoleWebSite);
         onGoogleSearchPage.searchText(searchText);
-
-        assertTrue(onGoogleSearchPage.findURLElement().getText().contains(searchText));
+        onGoogleSearchPage.clickButton().click();
+        assertTrue(onGoogleSearchPage.findURLElement().getText().toLowerCase().contains(searchText.toLowerCase()));
 
     }
 

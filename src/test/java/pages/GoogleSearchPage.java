@@ -10,24 +10,33 @@ public class GoogleSearchPage extends TestBase {
 
     private WebElement searchField;
     private WebElement searchLink;
-    private WebDriver driver;
+    private WebElement searchButton;
 
-    public GoogleSearchPage(WebDriver driver){
-        this.driver = driver;
+
+
+    public GoogleSearchPage(WebDriver webDriver){
+        this.webDriver = webDriver;
     }
 
+    public void open (String URL) {webDriver.get(URL);}
+
     public void searchText(String searchText){
-        searchField = driver.findElement(By.id("lst-ib"));
+        searchField = webDriver.findElement(By.id("lst-ib"));
         searchField.sendKeys(searchText);
 
     }
 
     public WebElement findURLElement(){
-        searchLink = driver.findElement(By.xpath(".//*[@id='rso']/div[2]/div[1]/div/h3/a"));
+        searchLink = webDriver.findElement(By.xpath(".//*[@id='rso']/div[2]/div[1]/div/h3/a"));
+
         return searchLink;
     }
 
-    public void open(String URL){
-        driver.get(URL);
+    public WebElement clickButton(){
+      searchButton = webDriver.findElement(By.xpath(".//*[@id='sblsbb']/button"));
+        return searchButton;
+
     }
+
+
 }
